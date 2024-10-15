@@ -1,0 +1,10 @@
+@if (vehicles$ | async; as vehicles) {
+  <app-list-vehicle
+    [vehicles]="vehicles.vehicles"
+  ></app-list-vehicle>
+
+} @else {
+  <div class="loading-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+}

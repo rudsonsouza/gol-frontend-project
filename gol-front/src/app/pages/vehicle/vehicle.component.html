@@ -1,0 +1,14 @@
+<div class="pensamento ff-roboto-mono" >
+  <label>Placa</label>
+  <p class="conteudo">{{ vehicle.placa }}</p>
+  <label>Modelo</label>
+  <p class="conteudo">{{ vehicle.modelo }}</p>
+  <div class="acoes">
+    <a mat-button matTooltip="Edit Course" matTooltipPosition="above" routerLink="/pensamentos/editarPensamento/{{vehicle.id}}">
+      <i class="material-symbols-outlined">edit</i>
+    </a>
+    <button type="button" mat-button matTooltip="Delete" matTooltipPosition="above">
+      <i class="material-symbols-outlined">delete</i>
+    </button>
+  </div>
+</div>

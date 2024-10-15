@@ -1,0 +1,187 @@
+
+<!-- Breadcrumb -->
+<div class="breadcrumb-card mb-25 d-md-flex align-items-center justify-content-between">
+  <h5 class="mb-0">
+    Editar Veículo
+  </h5>
+</div>
+<form>
+  <div class="row">
+    <div class="col-xxl-7 col-xxxl-8">
+      <mat-card class="daxa-card edit-course-card mb-25 border-radius bg-white border-none d-block">
+        <mat-card-content>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="mb-25">
+                <mat-form-field>
+                  <mat-label>
+                    Placa
+                  </mat-label>
+                  <input [(ngModel)]="vehicle.placa" matInput name="placa">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="mb-25">
+                <mat-form-field>
+                  <mat-label>
+                    Modelo
+                  </mat-label>
+                  <input [(ngModel)]="vehicle.modelo" matInput name="modelo">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="col-sm-12">
+              <div class="mb-25">
+                <mat-form-field>
+                  <mat-label>
+                    Ano
+                  </mat-label>
+                  <input [(ngModel)]="vehicle.ano" matInput name="ano">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="col-sm-12">
+              <div class="mb-25">
+                <mat-form-field>
+                  <mat-label>
+                    Cor
+                  </mat-label>
+                  <input [(ngModel)]="vehicle.cor" matInput name="cor">
+                </mat-form-field>
+              </div>
+            </div>
+
+
+          </div>
+        </mat-card-content>
+
+        <label *mat-tab-label>Revisões</label>
+
+        <div *ngFor="let revisao of vehicle.revisoes; let i = index">
+          <label class="main-label d-block lh-1 text-black">Revisão {{ i + 1 }}</label>
+          <mat-form-field>
+            <mat-label>Km</mat-label>
+            <input type="number" [(ngModel)]="revisao.km" name="km{{i}}" required matInput>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Valor da Revisão:</mat-label>
+            <input type="number" [(ngModel)]="revisao.valorDaRevisao" step="0.01" placeholder="0.00" name="valorDaRevisao{{i}}" required matInput>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Data:</mat-label>
+            <input matInput [(ngModel)]="revisao.data" name="data{{i}}" >
+
+          </mat-form-field>
+
+          <button mat-button type="button" (click)="removeRevisao(i)">Remover Revisão</button>
+        </div>
+
+        <button mat-button type="button" (click)="addRevision()">Adicionar Revisão</button>
+
+        <div class="btn-box d-md-flex align-items-center justify-content-between">
+          <button mat-button (click)="editVehicle()" class="botao">Salvar</button>
+          <button mat-button (click)="cancelar()" class="botao">Cancelar</button>
+        </div>
+
+      </mat-card>
+    </div>
+  </div>
+</form>
+<!--
+<form>
+  <div class="row">
+    <div class="col-xxl-7 col-xxxl-8">
+      <mat-card class="daxa-card edit-course-card mb-25 border-radius bg-white border-none d-block">
+        <mat-card-content>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="mb-25">
+                <label class="main-label d-block lh-1 text-black">Placa</label>
+                <mat-form-field>
+                  <mat-label>Placa</mat-label>
+                  <input [(ngModel)]="vehicle.placa"
+                         matInput name="placa">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</form>
+-->
+
+<!--
+<section>
+  <form>
+    <label for="placa">Placa</label>
+    <input
+      type="textarea"
+      class="input"
+      id="placa"
+      name="placa"
+      placeholder="Digite a placa"
+      [(ngModel)]="vehicle.placa"
+    >
+    <label for="modelo">Modelo</label>
+    <input
+      type="textarea"
+      class="input"
+      id="modelo"
+      name="modelo"
+      placeholder="Digite o modelo"
+      [(ngModel)]="vehicle.modelo"
+    >
+
+    <label for="ano">Ano</label>
+    <input
+      type="textarea"
+      class="input"
+      id="ano"
+      name="ano"
+      placeholder="Digite o ano"
+      [(ngModel)]="vehicle.ano"
+    >
+
+    <label for="cor">Cor</label>
+    <input
+      type="textarea"
+      class="input"
+      id="cor"
+      name="cor"
+      placeholder="Digite a cor"
+      [(ngModel)]="vehicle.cor"
+    >
+
+    <h3>Revisões</h3>
+
+    <div *ngFor="let revisao of vehicle.revisoes; let i = index">
+      <h4>Revisão {{ i + 1 }}</h4>
+      <div>
+        <label>Km:</label>
+        <input type="number" [(ngModel)]="revisao.km" name="km{{i}}" required />
+      </div>
+      <div>
+        <label>Valor da Revisão:</label>
+        <input type="number" [(ngModel)]="revisao.valorDaRevisao" step="0.01" placeholder="0.00" name="valorDaRevisao{{i}}" required />
+      </div>
+      <div>
+        <label>Data:</label>
+        <input type="datetime-local" [(ngModel)]="revisao.data" name="data{{i}}" required />
+      </div>
+      <button type="button" (click)="removeRevisao(i)">Remover Revisão</button>
+    </div>
+
+    <button type="button" (click)="addRevision()">Adicionar Revisão</button>
+
+    <div class="acoes">
+      <button (click)="editVehicle()" class="botao">Salvar</button>
+      <button (click)="cancelar()" class="botao">Cancelar</button>
+    </div>
+  </form>
+</section>
+-->

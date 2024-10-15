@@ -1,0 +1,166 @@
+<!-- Breadcrumb -->
+<div class="breadcrumb-card mb-25 d-md-flex align-items-center justify-content-between">
+  <h5 class="mb-0">
+    Criar veículo
+  </h5>
+</div>
+
+<!-- Create Course -->
+<form>
+  <div class="row">
+    <div class="col-xxl-7 col-xxxl-8">
+      <mat-card class="daxa-card create-course-card mb-25 border-radius bg-white border-none d-block">
+        <mat-card-content>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="mb-25">
+                <mat-form-field>
+                  <mat-label>
+                    Placa
+                  </mat-label>
+                  <input matInput [(ngModel)]="vehicle.placa" placeholder="Digite a placa" name="placa">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="col-sm-12">
+              <div class="mb-25">
+                <mat-form-field>
+                  <mat-label>
+                    Modelo
+                  </mat-label>
+                  <input matInput [(ngModel)]="vehicle.modelo" placeholder="Digite o modelo" name="modelo">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="col-sm-12">
+              <div class="mb-25">
+                <mat-form-field>
+                  <mat-label>
+                    Ano
+                  </mat-label>
+                  <input matInput [(ngModel)]="vehicle.ano" placeholder="Digite o ano" name="ano">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="col-sm-12">
+              <div class="mb-25">
+                <mat-form-field>
+                  <mat-label>
+                    Cor
+                  </mat-label>
+                  <input matInput [(ngModel)]="vehicle.cor" placeholder="Digite a cor" name="cor">
+                </mat-form-field>
+              </div>
+            </div>
+
+          </div>
+        </mat-card-content>
+
+        <label *mat-tab-label>Revisões</label>
+
+        <div *ngFor="let revisao of vehicle.revisoes; let i = index">
+          <label class="main-label d-block lh-1 text-black">Revisão {{ i + 1 }}</label>
+          <mat-form-field>
+            <mat-label>Km</mat-label>
+            <input type="number" [(ngModel)]="revisao.km" name="km{{i}}" required matInput>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Valor da Revisão:</mat-label>
+            <input type="number" [(ngModel)]="revisao.valorDaRevisao" step="0.01" placeholder="0.00" name="valorDaRevisao{{i}}" required matInput>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Data:</mat-label>
+            <input  matInput placeholder="Choose a date" [matDatepicker]="creatoDal"
+                    (focus)="creatoDal.open()" readonly>
+            <mat-datepicker-toggle matSuffix [for]="creatoDal"></mat-datepicker-toggle>
+            <mat-datepicker #creatoDal></mat-datepicker>
+
+          </mat-form-field>
+
+          <button mat-button type="button" (click)="removeRevisao(i)">Remover Revisão</button>
+        </div>
+
+        <button mat-button type="button" (click)="addRevision()">Adicionar Revisão</button>
+
+        <div class="btn-box d-md-flex align-items-center justify-content-between">
+          <button mat-button (click)="createVehicle()" class="botao">Salvar</button>
+          <button mat-button (click)="cancelar()" class="botao">Cancelar</button>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</form>
+
+<!--
+<section class="container criar-pensamentos ff-inter">
+  <header class="header">
+    <h2>Adicione um <br>veículo:</h2>
+  </header>
+  <form>
+    <label for="placa">Placa</label>
+    <input
+      type="textarea"
+      class="input"
+      id="placa"
+      name="placa"
+      placeholder="Digite a placa"
+      [(ngModel)]="vehicle.placa"
+    >
+
+    <label for="placa">Modelo</label>
+    <input
+      type="textarea"
+      class="input"
+      id="modelo"
+      name="modelo"
+      placeholder="Digite o modelo"
+      [(ngModel)]="vehicle.modelo"
+    >
+
+    <label for="placa">Ano</label>
+    <input
+      type="textarea"
+      class="input"
+      id="ano"
+      name="ano"
+      placeholder="Digite o ano"
+      [(ngModel)]="vehicle.ano"
+    >
+
+    <label for="placa">Cor</label>
+    <input
+      type="textarea"
+      class="input"
+      id="cor"
+      name="cor"
+      placeholder="Digite a cor"
+      [(ngModel)]="vehicle.cor"
+    >
+
+    <h3>Adicionar Revisões</h3>
+
+    <div *ngFor="let revisao of vehicle.revisoes; let i = index">
+      <h4>Revisão {{ i + 1 }}</h4>
+      <div>
+        <label>Km:</label>
+        <input type="number" [(ngModel)]="revisao.km" name="km{{i}}" required />
+      </div>
+      <div>
+        <label>Valor da Revisão:</label>
+        <input type="number" [(ngModel)]="revisao.valorDaRevisao" name="valor{{i}}" required />
+      </div>
+      <button type="button" (click)="removeRevisao(i)">Remover Revisão</button>
+    </div>
+
+    <button type="button" (click)="addRevision()">Adicionar Revisão</button>
+
+    <div class="acoes">
+      <button (click)="createVehicle()" class="botao">Salvar</button>
+      <button (click)="cancelar()" class="botao">Cancelar</button>
+    </div>
+  </form>
+</section>
+-->
